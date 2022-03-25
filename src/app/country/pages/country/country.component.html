@@ -1,0 +1,44 @@
+<h2>Por País</h2>
+<hr/>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="buscar()" autocomplete="off">
+            <input  type = "text"
+                    class = "form-control"
+                    name = "searchWord"
+                    [(ngModel)]="searchWord"
+                    placeholder = "Buscar país..."/>
+        </form>
+    </div>
+</div>
+<hr/>
+<div *ngIf="hasError" class="alert alert-danger">
+        No se encontró nada con el término "<b>{{searchWord}}</b>"
+</div>
+<div *ngIf="countriesList.length > 0" class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Bandera</th>
+                    <th>Nombre</th>
+                    <th>Población</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let countryItem of countriesList; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                        <img class="small-flag" [src]="countryItem.flags.png">
+                    </td>
+                    <td>{{countryItem.name.common}}</td>
+                    <td>{{countryItem.population | number}}</td>
+                    <td>
+                        <a [routerLink]="['/country', countryItem.cca2]">Ver País...</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

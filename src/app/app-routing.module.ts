@@ -1,27 +1,27 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { PorPaisComponent } from './country/pages/by-country/por-pais.component';
-import { PorRegionComponent } from './country/pages/by-region/por-region.component';
-import { PorCapitalComponent } from './country/pages/by-capital/por-capital.component';
-import { VerPaisComponent } from './country/pages/contry-detail/ver-pais.component';
+import { CountryComponent } from './country/pages/country/country.component';
+import { RegionComponent } from './country/pages/region/region.component';
+import { CapitalComponent } from './country/pages/capital/capital.component';
+import { CountryDetailComponent } from './country/pages/contry-detail/country-detail.component';
 
 const routes: Routes = [
     {
         path:'',
-        component: PorPaisComponent,
+        component: CountryComponent,
         pathMatch: 'full'
     },
     {
         path: 'region',
-        component: PorRegionComponent
+        component: RegionComponent
     },
     {
         path: 'capital',
-        component: PorCapitalComponent
+        component: CapitalComponent
     },
     {
-        path: 'pais/:id',
-        component: VerPaisComponent
+        path: 'country/:id',
+        component: CountryDetailComponent
     },
     {
         path:'**',
