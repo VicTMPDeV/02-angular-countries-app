@@ -8,7 +8,7 @@ import { Country } from '../interfaces/country.interface';
 })
 export class CountryService {
 
-  private apiUrl:string = 'https://restcountries.com/v3.1';
+  private apiUrl:string = 'https://restcountries.com/v2';
 
   constructor( private http: HttpClient ) { }
 

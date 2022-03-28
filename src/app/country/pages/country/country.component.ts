@@ -15,8 +15,6 @@ export class CountryComponent {
 
   constructor(private countryServiceInstance: CountryService) { }
 
-  
-
   buscar(){
     this.hasError = false;
     this.countryServiceInstance.searchCountry(this.searchWord)
