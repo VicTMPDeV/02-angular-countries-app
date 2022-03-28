@@ -15,7 +15,7 @@ export class CountryComponent {
 
   constructor(private countryServiceInstance: CountryService) { }
 
-  searchFromAPI(wordSeek:string){
+  public searchFromAPI(wordSeek:string){
     this.hasError = false;
     this.searchWord = wordSeek;
     this.countryServiceInstance.searchCountry(this.searchWord)
@@ -28,6 +28,10 @@ export class CountryComponent {
           this.countriesList = []; //purge list to 0 size to use this condition at *NgIf
         }
       });
+  }
+
+  public suggestions(wordSeek:string){
+    this.hasError = false;
   }
 
 }

@@ -2,7 +2,10 @@
 <hr/>
 <div class="row">
     <div class="col">
-        <app-country-input (onEnter)="searchFromAPI($event)"></app-country-input>
+        <app-country-input 
+            (onEnter)="searchFromAPI($event)"
+            (onDebounce)="suggestions($event)">
+        </app-country-input>
     </div>
 </div>
 <hr/>

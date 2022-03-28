@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-country-input',
@@ -6,16 +8,38 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styles: [
   ]
 })
-export class CountryInputComponent {
+export class CountryInputComponent implements OnInit {
 
-  @Output() onEnter: EventEmitter<string> = new EventEmitter();
+  @Output() 
+  public onEnter: EventEmitter<string> = new EventEmitter();
 
-  public wordSeek: string = '';
+  @Output()
+  public onDebounce: EventEmitter<string> = new EventEmitter(); 
+  
+  //Debunce sin Formularios Reactivos -> Observable Subject de RxJS
+  public debouncer: Subject<string> = new Subject();
+
+  public searchValue: string = '';
 
   constructor() { }
 
+  ngOnInit(): void {
+    this.debouncer
+      .pipe(
+        debounceTime(300)
+      )
+      .subscribe( value => {
+        // console.log('debouncer: ', value);
+        this.onDebounce.emit(value)
+      });
+  }
+
   search() {
-    this.onEnter.emit(this.wordSeek);
+    this.onEnter.emit(this.searchValue);
+  }
+
+  onKeyPress(){
+    this.debouncer.next(this.searchValue);
   }
 
 }
