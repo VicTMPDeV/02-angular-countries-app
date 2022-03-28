@@ -15,8 +15,9 @@ export class CountryComponent {
 
   constructor(private countryServiceInstance: CountryService) { }
 
-  buscar(){
+  searchFromAPI(wordSeek:string){
     this.hasError = false;
+    this.searchWord = wordSeek;
     this.countryServiceInstance.searchCountry(this.searchWord)
       .subscribe({
         next: (apiResponse) => {
