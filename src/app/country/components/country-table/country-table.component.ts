@@ -9,7 +9,8 @@ import { Country } from '../../interfaces/country.interface';
 })
 export class CountryTableComponent {
 
-  @Input() listCountries: Country[] = [];
+  @Input() 
+  listCountries: Country[] = [];
 
   constructor() { 
   }
