@@ -18,7 +18,7 @@ export class CapitalComponent {
   public findByCapital(value:string){
     this.hasError = false;
     this.searchValue = value;
-    this.countryServiceInstance.requestCapital(this.searchValue)
+    this.countryServiceInstance.requestCapitals(this.searchValue)
       .subscribe({
         next: (apiResponse) => {
           this.capitalsList = apiResponse;

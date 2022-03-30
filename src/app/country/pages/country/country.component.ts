@@ -18,7 +18,7 @@ export class CountryComponent {
   public findByName(value:string){
     this.hasError = false;
     this.searchValue = value;
-    this.countryServiceInstance.requestCountry(this.searchValue)
+    this.countryServiceInstance.requestCountries(this.searchValue)
       .subscribe({
         next: (apiResponse) => {
           this.countriesList = apiResponse;

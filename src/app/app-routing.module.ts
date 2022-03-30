@@ -20,12 +20,12 @@ const routes: Routes = [
         component: CapitalComponent
     },
     {
-        path: 'country/:id',
+        path: 'country/:id', //:id is the param for the ActivatedRoute 
         component: CountryDetailComponent
     },
     {
         path:'**',
-        redirectTo: ''  //tambien se puede usar un componente de error 404
+        redirectTo: ''  //also can use activated error 404
     }
 ];
 
