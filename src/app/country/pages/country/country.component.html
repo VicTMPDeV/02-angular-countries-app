@@ -1,16 +1,17 @@
 <h2>Por País</h2>
-<hr/>
+<hr />
 <div class="row">
     <div class="col">
         <app-country-input 
-            (onEnter)="searchFromAPI($event)"
-            (onDebounce)="suggestions($event)">
+            (onEnter) = "findByName($event)" 
+            (onDebounce) = "suggestions($event)"
+            inputPlaceHolder = "Buscar País...">
         </app-country-input>
     </div>
 </div>
-<hr/>
+<hr />
 <div *ngIf="hasError" class="alert alert-danger">
-        No se encontró nada con el término "<b>{{searchWord}}</b>"
+    No se encontró nada con el término "<b>{{searchValue}}</b>"
 </div>
 <div *ngIf="countriesList.length > 0" class="row">
     <div class="col">

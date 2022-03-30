@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -15,6 +15,9 @@ export class CountryInputComponent implements OnInit {
 
   @Output()
   public onDebounce: EventEmitter<string> = new EventEmitter(); 
+
+  @Input()
+  public inputPlaceHolder: string = '';
   
   //Debunce sin Formularios Reactivos -> Observable Subject de RxJS
   public debouncer: Subject<string> = new Subject();

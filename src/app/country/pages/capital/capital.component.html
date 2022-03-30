@@ -1,1 +1,21 @@
-<p>por-capital works!</p>
+<h2>Por Capital</h2>
+<hr/>
+<div class="row">
+    <div class="col">
+        <app-country-input 
+            (onEnter)="findByCapital($event)"
+            inputPlaceHolder = "Buscar Capital...">
+        </app-country-input>
+    </div>
+</div>
+<hr/>
+<div *ngIf="hasError" class="alert alert-danger">
+        No se encontró nada con el término "<b>{{searchValue}}</b>"
+</div>
+<div *ngIf="capitalsList.length > 0" class="row">
+    <div class="col">
+        <app-country-table 
+            [listCountries]="capitalsList">
+        </app-country-table>
+    </div>
+</div>

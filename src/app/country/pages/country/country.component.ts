@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Country } from '../../interfaces/country.interface';
+import { Component, Input } from '@angular/core';
 import { CountryService } from '../../services/country.service';
+import { Country } from '../../interfaces/country.interface';
 
 @Component({
   selector: 'app-country',
@@ -9,16 +9,16 @@ import { CountryService } from '../../services/country.service';
 })
 export class CountryComponent {
 
-  public searchWord: string = '';
+  public searchValue: string = '';
   public hasError: boolean = false;
   public countriesList: Country[] = [];
 
   constructor(private countryServiceInstance: CountryService) { }
 
-  public searchFromAPI(wordSeek:string){
+  public findByName(value:string){
     this.hasError = false;
-    this.searchWord = wordSeek;
-    this.countryServiceInstance.searchCountry(this.searchWord)
+    this.searchValue = value;
+    this.countryServiceInstance.requestCountry(this.searchValue)
       .subscribe({
         next: (apiResponse) => {
           this.countriesList = apiResponse;
