@@ -1,1 +1,54 @@
-<p>ver-pais works!</p>
+<div *ngIf="!country; else divCountry" class="alert alert-info">
+    Cargando resultados...
+</div>
+<!-- Como la llamada al servicio es asíncrona (un Observable)
+ocurre que hay un breve periodo de tiempo donde el objeto country
+es undefinded (hasta que se recibe la respuesta).
+Durante este periodo de tiempo, si no discriminamos el valor
+de country con ngIf hasta que valga algo que no sea undefined, 
+el log me va a pintar un error al intentar acceder a country.name
+en el segundo div (si no lo envolvieramos con ng-template
+haciendo uso de las referencias locales para el ELSE)-->
+<ng-template #divCountry>
+    <div class="row">
+        <div class="col-12">
+            <h1>País: <small>{{country.translations.es | titlecase}}</small></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera:</h3>
+            <img [src]="country.flag" class="img-thumbnail" />
+        </div>
+        <div class="col">
+            <h3>Información:</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Capital: </strong>{{ country.capital | titlecase }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Población: </strong>{{ country.population | number }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Código numérico: </strong>{{ country.numericCode }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Código Alpha2: </strong>{{ country.alpha2Code }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span class="badge bg-primary mr-1 mt-1">{{country.translations.es}}</span>
+            <span class="badge bg-primary mr-1 mt-1">{{country.name}}</span>
+            <span class="badge bg-primary mr-1 mt-1">{{country.translations.pt}}</span>
+            <span class="badge bg-primary mr-1 mt-1">{{country.translations.fr}}</span>
+            <span class="badge bg-primary mr-1 mt-1">{{country.translations.de}}</span>
+            <span class="badge bg-primary mr-1 mt-1">{{country.translations.fa}}</span>
+            <span class="badge bg-primary mr-1 mt-1">{{country.translations.ja}}</span>
+        </div>
+    </div>
+</ng-template>
+<!-- PARA HACER PRUEBAS -->
+<!-- <pre>{{country | json}}</pre> -->
