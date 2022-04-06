@@ -8,25 +8,31 @@ import { Country } from '../interfaces/country.interface';
 })
 export class CountryService {
 
-  private apiUrl:string = 'https://restcountries.com/v2';
+  private apiUrl: string = 'https://restcountries.com/v2';
   private byNameEndpoint: string = 'name';
   private byCapitalEndpoint: string = 'capital';
-  private CountryCodeEndpoint: string = 'alpha';
+  private countryCodeEndpoint: string = 'alpha';
+  private regionEndpoint: string = 'region';
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
-  requestCountries( value:string ): Observable<Country[]>{
+  requestCountries(value: string): Observable<Country[]> {
     const url = `${this.apiUrl}/${this.byNameEndpoint}/${value}`;
     return this.http.get<Country[]>(url);
   }
 
-  requestCapitals( value:string ): Observable<Country[]>{
+  requestCapitals(value: string): Observable<Country[]> {
     const url = `${this.apiUrl}/${this.byCapitalEndpoint}/${value}`;
     return this.http.get<Country[]>(url);
   }
 
-  requestCountryByCode( id:string ): Observable<Country>{
-    const url = `${this.apiUrl}/${this.CountryCodeEndpoint}/${id}`;
+  requestCountryByCode(id: string): Observable<Country> {
+    const url = `${this.apiUrl}/${this.countryCodeEndpoint}/${id}`;
     return this.http.get<Country>(url);
+  }
+
+  requestRegions(value: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/${this.regionEndpoint}/${value}`;
+    return this.http.get<Country[]>(url);
   }
 }
