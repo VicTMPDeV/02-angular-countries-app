@@ -1,6 +1,8 @@
 <div class="animate__animated animate__fadeIn animate__faster">
     <h2>Buscar por País</h2>
-    <hr />
+    
+    <hr/>
+
     <div class="row">
         <div class="col">
             <app-country-input 
@@ -10,7 +12,24 @@
             </app-country-input>
         </div>
     </div>
-    <hr />
+
+    <ul *ngIf="showSuggestion"
+        class="list-group">
+        <li *ngFor="let country of suggestedList"
+            class="list-group-item list-group-item-action">
+            <a class="nav-link" [routerLink]="[ '/country', country.alpha2Code ]">
+                {{country.name}}
+            </a>
+        </li>
+        <li class="list-group-item list-group-item-action"
+            style="background-color: rgb(121, 162, 216);"
+            (click)="findByName(searchValue)">
+            <a class="nav-link" style="color:black">Buscar "{{searchValue}}"</a>
+        </li>
+    </ul>
+
+    <hr/>
+    
     <div *ngIf="hasError" class="alert alert-danger">
         No se encontró nada con el término "<b>{{searchValue}}</b>"
     </div>
