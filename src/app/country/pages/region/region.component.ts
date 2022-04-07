@@ -20,13 +20,13 @@ export class RegionComponent {
   constructor( private countryServiceInstance:CountryService ) { }
 
   public setCssClass(region: string): string {
-    console.log('PREGUNTAR A EFI');//TODO
+    // console.log('PREGUNTAR A EFI');//TODO
     return (region === this.activeRegion)?'btn btn-primary':'btn btn-outline-primary';
   }
 
   public setActiveRegion(region: string) {
-    //avoid refresh when clic on the same button
-    if( region !== this.activeRegion ){
+    //avoid refresh on click at the same button
+    if( region === this.activeRegion ){
       return;
     }
     this.activeRegion = region;

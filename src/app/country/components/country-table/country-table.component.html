@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover animate__animated animate__fadeIn animate__faster align-middle">
     <thead>
         <tr>
             <th>#</th>
@@ -6,10 +6,12 @@
             <th>Nombre</th>
             <th>Capital</th>
             <th>Población</th>
+            <th>Detalle</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let countryItem of listCountries; let i = index">
+        <tr *ngFor="let countryItem of listCountries; let i = index"
+            class="animate__animated animate__fadeIn animate__slow">
             <td>{{ i + 1 }}</td>
             <td>
                 <img class="small-flag" [src]="countryItem.flags.png">
@@ -18,7 +20,10 @@
             <td>{{countryItem.capital}}</td>
             <td>{{countryItem.population | number}}</td>
             <td>
-                <a [routerLink]="['/country', countryItem.alpha2Code]">Ver País...</a>
+                <button class="btn btn-outline-primary" 
+                        [routerLink]="['/country', countryItem.alpha2Code]">
+                        <b>Ver</b>
+                </button>
             </td>
         </tr>
     </tbody>
