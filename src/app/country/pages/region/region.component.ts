@@ -20,7 +20,7 @@ export class RegionComponent {
   constructor( private countryServiceInstance:CountryService ) { }
 
   public setCssClass(region: string): string {
-    // console.log('PREGUNTAR A EFI');//TODO
+    console.log('PREGUNTAR A EFI');//TODO
     return (region === this.activeRegion)?'btn btn-primary':'btn btn-outline-primary';
   }
 

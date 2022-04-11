@@ -5,11 +5,29 @@
         <div class="col">
             <app-country-input 
                 (onEnter)="findByCapital($event)"
+                (onDebounce) = "suggestions($event)"
                 inputPlaceHolder = "Buscar Capital...">
             </app-country-input>
         </div>
     </div>
+
+    <ul *ngIf="showSuggestion"
+        class="list-group">
+        <li *ngFor="let country of suggestedList"
+            class="list-group-item list-group-item-action">
+            <a class="nav-link" [routerLink]="[ '/country', country.alpha2Code ]">
+                {{country.capital}}
+            </a>
+        </li>
+    <li class="list-group-item list-group-item-action"
+        style="background-color: rgb(121, 162, 216);"
+        (click)="findByCapital(searchValue)">
+        <a class="nav-link" style="color:black">Buscar "{{searchValue}}"</a>
+    </li>
+</ul>
+
     <hr/>
+
     <div *ngIf="hasError" class="alert alert-danger">
             No se encontró nada con el término "<b>{{searchValue}}</b>"
     </div>
