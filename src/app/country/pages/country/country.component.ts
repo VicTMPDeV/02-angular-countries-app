@@ -29,7 +29,7 @@ export class CountryComponent {
     this.searchValue = value;
 
     this.countryServiceInstance.requestCountries(this.searchValue)
-      .subscribe({
+      .subscribe({ //VERY IMPORTANT POINT
         next: (apiResponse) => {
           this.countriesList = apiResponse;
         },
