@@ -2,7 +2,7 @@
 
 Another sample of angular application to learn the use of a SPA
 
-Now v.1.0 is deployed at https://victorcountries.netlify.app
+Now v.1.0 is deployed at https://victorcountries.netlify.app/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
